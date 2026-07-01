@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.prose-content h2 {
+  @apply text-xl font-bold text-gray-800 mt-8 mb-3;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.prose-content h3 {
+  @apply text-lg font-semibold text-gray-800 mt-6 mb-2;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.prose-content p {
+  @apply text-gray-600 leading-relaxed mb-4;
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.prose-content ul {
+  @apply list-disc pl-5 mb-4 space-y-1;
+}
+.prose-content li {
+  @apply text-gray-600 leading-relaxed;
+}
+.prose-content blockquote {
+  @apply border-l-4 border-teal-200 pl-4 py-1 my-4 text-gray-500 text-sm italic;
+}
+.prose-content a {
+  @apply text-teal-600 underline hover:text-teal-800;
+}
+.prose-content table {
+  @apply w-full border-collapse mb-4 text-sm;
+}
+.prose-content th {
+  @apply border border-gray-300 bg-gray-50 px-3 py-2 text-left font-medium text-gray-700;
+}
+.prose-content td {
+  @apply border border-gray-300 px-3 py-2 text-gray-600;
 }
