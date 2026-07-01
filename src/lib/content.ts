@@ -34,15 +34,19 @@ export function getContentBySlug(slug: string): ContentPage | null {
   const filePath = path.join(contentDir, `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;
 
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(raw);
+  try {
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const { data, content } = matter(raw);
 
-  return {
-    meta: {
-      slug,
-      title: data.title ?? getSectionBySlug(slug)?.title ?? slug,
-      description: data.description ?? getSectionBySlug(slug)?.description ?? "",
-    },
-    content,
-  };
+    return {
+      meta: {
+        slug,
+        title: typeof data.title === "string" ? data.title : (getSectionBySlug(slug)?.title ?? slug),
+        description: typeof data.description === "string" ? data.description : (getSectionBySlug(slug)?.description ?? ""),
+      },
+      content,
+    };
+  } catch {
+    return null;
+  }
 }
