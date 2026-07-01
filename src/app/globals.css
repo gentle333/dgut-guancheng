@@ -1,7 +1,81 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* DGUT Green palette */
+:root {
+  --dgut-green: #1a6b3c;
+  --dgut-green-light: #2d8a4e;
+  --dgut-green-dark: #0f4d28;
+  --dgut-green-pale: #e8f5e9;
+  --dgut-gold: #c8a84e;
+  --dgut-cream: #f7f4ed;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f7f0 0%, #f7f4ed 30%, #e8f5e9 60%, #f0f7f0 100%);
+  background-attachment: fixed;
+}
+
+/* Subtle pattern overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(circle at 20% 50%, #1a6b3c 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, #1a6b3c 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, #1a6b3c 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero background with campus feel */
+.hero-bg {
+  background: linear-gradient(135deg, #0f4d28 0%, #1a6b3c 40%, #2d8a4e 70%, #1a6b3c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(200,168,78,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Decorative tree silhouette (CSS-only campus element) */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 80px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(26, 107, 60, 0.15);
+}
+
+/* Prose content */
 .prose-content h2 {
-  @apply text-xl font-bold text-gray-800 mt-8 mb-3;
+  @apply text-xl font-bold text-gray-800 mt-8 mb-3 pb-2;
+  border-bottom: 2px solid #e8f5e9;
 }
 .prose-content h3 {
   @apply text-lg font-semibold text-gray-800 mt-6 mb-2;
@@ -16,17 +90,31 @@
   @apply text-gray-600 leading-relaxed;
 }
 .prose-content blockquote {
-  @apply border-l-4 border-teal-200 pl-4 py-1 my-4 text-gray-500 text-sm italic;
+  @apply border-l-4 border-green-200 pl-4 py-1 my-4 text-gray-500 text-sm italic bg-green-50/50 rounded-r-lg;
 }
 .prose-content a {
-  @apply text-teal-600 underline hover:text-teal-800;
+  @apply text-green-700 underline hover:text-green-900;
 }
 .prose-content table {
-  @apply w-full border-collapse mb-4 text-sm;
+  @apply w-full border-collapse mb-4 text-sm rounded-lg overflow-hidden;
 }
 .prose-content th {
-  @apply border border-gray-300 bg-gray-50 px-3 py-2 text-left font-medium text-gray-700;
+  @apply border border-green-200 bg-green-50 px-3 py-2 text-left font-medium text-green-900;
 }
 .prose-content td {
-  @apply border border-gray-300 px-3 py-2 text-gray-600;
+  @apply border border-green-100 px-3 py-2 text-gray-600;
+}
+.prose-content strong {
+  @apply text-green-800;
+}
+
+/* Landmark card decoration */
+.landmark-dot {
+  @apply inline-block w-2 h-2 rounded-full bg-green-500 mr-2;
+}
+
+/* Motto styling */
+.motto-text {
+  font-style: italic;
+  letter-spacing: 0.1em;
 }
