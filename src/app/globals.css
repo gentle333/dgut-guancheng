@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* DGUT Green palette */
 :root {
@@ -72,49 +70,51 @@ body::before {
   box-shadow: 0 12px 40px rgba(26, 107, 60, 0.15);
 }
 
-/* Prose content */
-.prose-content h2 {
-  @apply text-xl font-bold text-gray-800 mt-8 mb-3 pb-2;
-  border-bottom: 2px solid #e8f5e9;
-}
-.prose-content h3 {
-  @apply text-lg font-semibold text-gray-800 mt-6 mb-2;
-}
-.prose-content p {
-  @apply text-gray-600 leading-relaxed mb-4;
-}
-.prose-content ul {
-  @apply list-disc pl-5 mb-4 space-y-1;
-}
-.prose-content li {
-  @apply text-gray-600 leading-relaxed;
-}
-.prose-content blockquote {
-  @apply border-l-4 border-green-200 pl-4 py-1 my-4 text-gray-500 text-sm italic bg-green-50/50 rounded-r-lg;
-}
-.prose-content a {
-  @apply text-green-700 underline hover:text-green-900;
-}
-.prose-content table {
-  @apply w-full border-collapse mb-4 text-sm rounded-lg overflow-hidden;
-}
-.prose-content th {
-  @apply border border-green-200 bg-green-50 px-3 py-2 text-left font-medium text-green-900;
-}
-.prose-content td {
-  @apply border border-green-100 px-3 py-2 text-gray-600;
-}
-.prose-content strong {
-  @apply text-green-800;
-}
-
-/* Landmark card decoration */
-.landmark-dot {
-  @apply inline-block w-2 h-2 rounded-full bg-green-500 mr-2;
-}
-
 /* Motto styling */
 .motto-text {
   font-style: italic;
   letter-spacing: 0.1em;
+}
+
+@layer components {
+  /* Prose content */
+  .prose-content h2 {
+    @apply text-xl font-bold text-gray-800 mt-8 mb-3 pb-2;
+    border-bottom: 2px solid #e8f5e9;
+  }
+  .prose-content h3 {
+    @apply text-lg font-semibold text-gray-800 mt-6 mb-2;
+  }
+  .prose-content p {
+    @apply text-gray-600 leading-relaxed mb-4;
+  }
+  .prose-content ul {
+    @apply list-disc pl-5 mb-4 space-y-1;
+  }
+  .prose-content li {
+    @apply text-gray-600 leading-relaxed;
+  }
+  .prose-content blockquote {
+    @apply border-l-4 border-green-200 pl-4 py-1 my-4 text-gray-500 text-sm italic bg-green-50/50 rounded-r-lg;
+  }
+  .prose-content a {
+    @apply text-green-700 underline hover:text-green-900;
+  }
+  .prose-content table {
+    @apply w-full border-collapse mb-4 text-sm rounded-lg overflow-hidden;
+  }
+  .prose-content th {
+    @apply border border-green-200 bg-green-50 px-3 py-2 text-left font-medium text-green-900;
+  }
+  .prose-content td {
+    @apply border border-green-100 px-3 py-2 text-gray-600;
+  }
+  .prose-content strong {
+    @apply text-green-800;
+  }
+
+  /* Landmark card decoration */
+  .landmark-dot {
+    @apply inline-block w-2 h-2 rounded-full bg-green-500 mr-2;
+  }
 }
