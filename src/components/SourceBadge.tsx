@@ -15,7 +15,7 @@ export default function SourceBadge({
         rel="noopener noreferrer"
         className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-teal-600 transition-colors"
       >
-        <span className="inline-block w-1 h-1 rounded-full bg-gray-300" />
+        <span className="inline-block w-1 h-1 rounded-full bg-gray-300" aria-hidden="true" />
         来源: {name}
       </a>
     );
@@ -23,7 +23,7 @@ export default function SourceBadge({
 
   return (
     <span className="inline-flex items-center gap-1 text-xs text-gray-400">
-      <span className="inline-block w-1 h-1 rounded-full bg-gray-300" />
+      <span className="inline-block w-1 h-1 rounded-full bg-gray-300" aria-hidden="true" />
       来源: {name}
     </span>
   );
