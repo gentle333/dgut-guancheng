@@ -34,10 +34,10 @@ export default async function ContentPage({ params }: { params: Promise<{ slug: 
                   <Link
                     key={s.slug}
                     href={`/${s.slug}`}
-                    className={`px-3 py-1.5 rounded text-sm transition-colors ${
+                    className={`px-3 py-1.5 rounded text-sm transition-colors hover-bounce ${
                       active
-                        ? "bg-teal-50 text-teal-700 font-medium"
-                        : "text-gray-500 hover:text-teal-700 hover:bg-teal-50"
+                        ? "bg-dgut-50 text-dgut-600 font-medium"
+                        : "text-gray-500 hover:text-dgut-600 hover:bg-dgut-50"
                     }`}
                   >
                     {s.emoji} {s.title}

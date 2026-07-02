@@ -1,17 +1,30 @@
 @import "tailwindcss";
 
-/* DGUT Green palette */
+/* DGUT brand palette — based on official logo green #006C3C */
+@theme {
+  --color-dgut-50: #e6f4ed;
+  --color-dgut-100: #cce9da;
+  --color-dgut-200: #99d3b5;
+  --color-dgut-300: #66bd90;
+  --color-dgut-400: #339a6b;
+  --color-dgut-500: #006C3C;
+  --color-dgut-600: #005a32;
+  --color-dgut-700: #004828;
+  --color-dgut-800: #00361e;
+  --color-dgut-900: #002414;
+}
+
 :root {
-  --dgut-green: #1a6b3c;
-  --dgut-green-light: #2d8a4e;
-  --dgut-green-dark: #0f4d28;
-  --dgut-green-pale: #e8f5e9;
+  --dgut-green: #006C3C;
+  --dgut-green-light: #339a6b;
+  --dgut-green-dark: #004828;
+  --dgut-green-pale: #e6f4ed;
   --dgut-gold: #c8a84e;
   --dgut-cream: #f7f4ed;
 }
 
 body {
-  background: linear-gradient(135deg, #f0f7f0 0%, #f7f4ed 30%, #e8f5e9 60%, #f0f7f0 100%);
+  background: linear-gradient(135deg, #f0f7f2 0%, #f7f4ed 30%, #e6f4ed 60%, #f0f7f2 100%);
   background-attachment: fixed;
 }
 
@@ -22,9 +35,9 @@ body::before {
   inset: 0;
   opacity: 0.03;
   background-image:
-    radial-gradient(circle at 20% 50%, #1a6b3c 1px, transparent 1px),
-    radial-gradient(circle at 80% 20%, #1a6b3c 1px, transparent 1px),
-    radial-gradient(circle at 40% 80%, #1a6b3c 1px, transparent 1px);
+    radial-gradient(circle at 20% 50%, #006C3C 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, #006C3C 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, #006C3C 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
   z-index: 0;
@@ -32,7 +45,7 @@ body::before {
 
 /* Hero background with campus feel */
 .hero-bg {
-  background: linear-gradient(135deg, #0f4d28 0%, #1a6b3c 40%, #2d8a4e 70%, #1a6b3c 100%);
+  background: linear-gradient(135deg, #002414 0%, #004828 30%, #006C3C 60%, #004828 100%);
   position: relative;
   overflow: hidden;
 }
@@ -66,8 +79,12 @@ body::before {
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(26, 107, 60, 0.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(0, 108, 60, 0.18);
+}
+
+.card-hover:active {
+  transform: translateY(-2px) scale(0.99);
 }
 
 /* Motto styling */
@@ -76,45 +93,127 @@ body::before {
   letter-spacing: 0.1em;
 }
 
+/* ===== Floating emoji bubbles ===== */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  90% {
+    opacity: 0.08;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.floating-emoji {
+  position: absolute;
+  bottom: -40px;
+  animation: float-up 18s linear infinite;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+
+/* ===== Hover bounce ===== */
+@keyframes gentle-bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.06); }
+  60% { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+.hover-bounce:hover {
+  animation: gentle-bounce 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-bounce:active {
+  transform: scale(0.92);
+  transition: transform 0.1s;
+}
+
+/* ===== Jelly spring (for click via class toggle) ===== */
+@keyframes jelly {
+  0% { transform: scale(1); }
+  25% { transform: scale(0.88); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+/* ===== 3D Tilt Card ===== */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.tilt-card-inner {
+  transition: transform 0.1s ease-out;
+}
+
+.tilt-card-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.25) 0%,
+    transparent 60%
+  );
+  z-index: 2;
+}
+
+.tilt-card:hover .tilt-card-glare {
+  opacity: 1;
+}
+
 @layer components {
   /* Prose content */
   .prose-content h2 {
     @apply text-xl font-bold text-gray-800 mt-8 mb-3 pb-2;
-    border-bottom: 2px solid #e8f5e9;
+    border-bottom: 2px solid var(--dgut-green-pale);
   }
   .prose-content h3 {
     @apply text-lg font-semibold text-gray-800 mt-6 mb-2;
   }
   .prose-content p {
-    @apply text-gray-600 leading-relaxed mb-4;
+    @apply text-gray-600 leading-loose mb-5;
   }
   .prose-content ul {
-    @apply list-disc pl-5 mb-4 space-y-1;
+    @apply list-disc pl-5 mb-4 space-y-2;
   }
   .prose-content li {
-    @apply text-gray-600 leading-relaxed;
+    @apply text-gray-600 leading-loose;
   }
   .prose-content blockquote {
-    @apply border-l-4 border-green-200 pl-4 py-1 my-4 text-gray-500 text-sm italic bg-green-50/50 rounded-r-lg;
+    @apply border-l-4 border-dgut-200 pl-4 py-1 my-4 text-gray-500 text-sm italic bg-dgut-50/50 rounded-r-lg;
   }
   .prose-content a {
-    @apply text-green-700 underline hover:text-green-900;
+    @apply text-dgut-600 underline hover:text-dgut-800;
   }
   .prose-content table {
     @apply w-full border-collapse mb-4 text-sm rounded-lg overflow-hidden;
   }
   .prose-content th {
-    @apply border border-green-200 bg-green-50 px-3 py-2 text-left font-medium text-green-900;
+    @apply border border-dgut-200 bg-dgut-50 px-3 py-2 text-left font-medium text-dgut-800;
   }
   .prose-content td {
-    @apply border border-green-100 px-3 py-2 text-gray-600;
+    @apply border border-dgut-100 px-3 py-2 text-gray-600;
   }
   .prose-content strong {
-    @apply text-green-800;
+    @apply text-dgut-700;
   }
 
   /* Landmark card decoration */
   .landmark-dot {
-    @apply inline-block w-2 h-2 rounded-full bg-green-500 mr-2;
+    @apply inline-block w-2 h-2 rounded-full bg-dgut-400 mr-2;
   }
 }

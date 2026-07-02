@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Section } from "@/lib/sections";
 
 const emojiBg: Record<string, string> = {
-  campus: "from-green-500 to-emerald-600",
+  campus: "from-dgut-500 to-dgut-700",
   food: "from-orange-500 to-red-500",
   dorm: "from-blue-500 to-cyan-500",
   clubs: "from-purple-500 to-pink-500",
@@ -29,13 +29,13 @@ export default function Card({ section }: { section: Section }) {
           {section.emoji}
         </div>
 
-        <h3 className="font-bold text-lg text-gray-800 mb-1 group-hover:text-green-700 transition-colors">
+        <h3 className="font-bold text-lg text-gray-800 mb-1 group-hover:text-dgut-600 transition-colors">
           {section.title}
         </h3>
         <p className="text-sm text-gray-500 leading-relaxed">{section.description}</p>
 
         {/* Arrow on hover */}
-        <div className="mt-4 flex items-center gap-1 text-xs text-green-600 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="mt-4 flex items-center gap-1 text-xs text-dgut-500 opacity-0 group-hover:opacity-100 transition-opacity">
           <span>查看详情</span>
           <span>→</span>
         </div>
