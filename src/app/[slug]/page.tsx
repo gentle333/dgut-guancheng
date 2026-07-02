@@ -86,7 +86,7 @@ export default async function ContentPage({ params }: { params: Promise<{ slug: 
                     <Link
                       key={s.slug}
                       href={`/${s.slug}`}
-                      className={`px-3 py-1.5 rounded text-sm transition-colors hover-bounce ${
+                      className={`px-3 py-1.5 rounded text-sm transition-colors ${
                         active
                           ? "bg-dgut-50 text-dgut-600 font-medium"
                           : "text-gray-500 hover:text-dgut-600 hover:bg-dgut-50"

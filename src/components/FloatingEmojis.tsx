@@ -4,7 +4,7 @@
 import { useEffect, useRef } from "react";
 
 const EMOJIS = ["🏫", "🍜", "📚", "🏃", "🎓", "🌳", "🏛️", "📖", "🎵", "⚽"];
-const COUNT = 35;
+const COUNT = 10;
 
 interface Bubble {
   el: HTMLSpanElement;
@@ -32,7 +32,7 @@ export default function FloatingEmojis() {
       el.style.left = `${Math.random() * 100}%`;
       el.style.bottom = `${-5 + Math.random() * 105}%`; // some already visible
       el.style.fontSize = `${20 + Math.random() * 38}px`;
-      el.style.opacity = String(0.15 + Math.random() * 0.2);
+      el.style.opacity = String(0.06 + Math.random() * 0.08);
       el.style.animationDuration = `${10 + Math.random() * 20}s`;
       el.style.animationDelay = `${-Math.random() * 20}s`; // negative = already mid-animation
 

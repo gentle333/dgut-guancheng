@@ -28,21 +28,6 @@ body {
   background-attachment: fixed;
 }
 
-/* Subtle pattern overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  opacity: 0.03;
-  background-image:
-    radial-gradient(circle at 20% 50%, #006C3C 1px, transparent 1px),
-    radial-gradient(circle at 80% 20%, #006C3C 1px, transparent 1px),
-    radial-gradient(circle at 40% 80%, #006C3C 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  z-index: 0;
-}
-
 /* Hero background with campus feel */
 .hero-bg {
   background: linear-gradient(135deg, #002414 0%, #004828 30%, #006C3C 60%, #004828 100%);
@@ -140,21 +125,14 @@ body::before {
   animation: fade-in 0.4s ease-out;
 }
 
-/* ===== Hover bounce ===== */
-@keyframes gentle-bounce {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.06); }
-  60% { transform: scale(0.97); }
-  100% { transform: scale(1); }
+/* ===== Hover effect (subtle lift, no bounce) ===== */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hover-bounce:hover {
-  animation: gentle-bounce 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.hover-bounce:active {
-  transform: scale(0.92);
-  transition: transform 0.1s;
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* ===== Jelly spring (for click via class toggle) ===== */
@@ -198,35 +176,35 @@ body::before {
 @layer components {
   /* Prose content */
   .prose-content h2 {
-    @apply text-xl font-bold text-gray-800 mt-8 mb-3 pb-2;
+    @apply text-2xl font-bold text-gray-800 mt-10 mb-4 pb-2;
     border-bottom: 2px solid var(--dgut-green-pale);
   }
   .prose-content h3 {
-    @apply text-lg font-semibold text-gray-800 mt-6 mb-2;
+    @apply text-xl font-semibold text-gray-800 mt-8 mb-3;
   }
   .prose-content p {
-    @apply text-gray-600 leading-loose mb-5;
+    @apply text-[17px] text-gray-600 leading-relaxed mb-6;
   }
   .prose-content ul {
-    @apply list-disc pl-5 mb-4 space-y-2;
+    @apply list-disc pl-6 mb-5 space-y-2.5;
   }
   .prose-content li {
-    @apply text-gray-600 leading-loose;
+    @apply text-[17px] text-gray-600 leading-relaxed;
   }
   .prose-content blockquote {
-    @apply border-l-4 border-dgut-200 pl-4 py-1 my-4 text-gray-500 text-sm italic bg-dgut-50/50 rounded-r-lg;
+    @apply border-l-4 border-dgut-200 pl-5 py-2 my-5 text-gray-500 text-base italic bg-dgut-50/50 rounded-r-lg;
   }
   .prose-content a {
     @apply text-dgut-600 underline hover:text-dgut-800;
   }
   .prose-content table {
-    @apply w-full border-collapse mb-4 text-sm rounded-lg overflow-hidden;
+    @apply w-full border-collapse mb-5 text-base rounded-lg overflow-hidden;
   }
   .prose-content th {
-    @apply border border-dgut-200 bg-dgut-50 px-3 py-2 text-left font-medium text-dgut-800;
+    @apply border border-dgut-200 bg-dgut-50 px-4 py-2.5 text-left font-semibold text-dgut-800 text-base;
   }
   .prose-content td {
-    @apply border border-dgut-100 px-3 py-2 text-gray-600;
+    @apply border border-dgut-100 px-4 py-2.5 text-gray-600 text-base;
   }
   .prose-content strong {
     @apply text-dgut-700;
