@@ -80,7 +80,7 @@ body::before {
 
 .card-hover:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 48px rgba(0, 108, 60, 0.18);
+  box-shadow: 0 16px 48px rgba(0, 108, 60, 0.18), 0 0 0 2px var(--card-glow, rgba(0,108,60,0.2));
 }
 
 .card-hover:active {
@@ -118,6 +118,26 @@ body::before {
   pointer-events: none;
   user-select: none;
   will-change: transform;
+}
+
+/* ===== Float animation for illustrations ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ===== Page fade-in ===== */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
 }
 
 /* ===== Hover bounce ===== */

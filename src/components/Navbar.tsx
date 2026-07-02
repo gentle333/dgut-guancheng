@@ -14,7 +14,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-dgut-100 shadow-sm">
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link href="/" className="font-bold text-lg text-dgut-600 shrink-0 flex items-center gap-2 hover-bounce">
-          <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-dgut-500 to-dgut-700 flex items-center justify-center text-white text-xs font-bold">莞</span>
+          <img src="/images/logo-emblem.png" alt="东莞理工学院校徽" className="w-8 h-8" />
           莞城攻略
         </Link>
 
